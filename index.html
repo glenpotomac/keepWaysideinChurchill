@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stop MCPS Reassignment</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
+    header { background-color: #003366; color: white; padding: 20px; text-align: center; }
+    section { margin-top: 20px; }
+    a.button {
+      display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white;
+      text-decoration: none; border-radius: 5px; margin-top: 10px;
+    }
+    .row {
+  display: flex;
+    }
+
+.column {
+  flex: 50%;
+}
+
+    #map-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Protect Our Community Schools</h1>
+    <p>Oppose the reassignment of Wayside Elementary to Wootton</p>
+  </header>
+
+  <section>
+    <h2>What’s Happening?</h2>
+    <p>MCPS is proposing to reassign students from Wayside Elementary to the Wootton cluster. This would break apart our established community and disrupt academic pathways.</p>
+  </section>
+
+  <section>
+    <h2>Why Oppose the Change?</h2>
+    <ul>
+      <li>Splits students from Hoover Middle School</li>
+      <li>Breaks long-standing community ties</li>
+      <li>Creates additional transitions during a sensitive time</li>
+    </ul>
+  </section>
+  <section>
+      <div class="row">
+        <div class="column">
+          <h2>School Locations</h2>
+          <div id="map-container">
+          <div id="map"></div>
+          </div>
+        </div>
+
+        <div class="column">
+          <h2>Take Action</h2>
+          <p>Step 1. Download the petition to keep Wayside in the Churchill cluster.</p>
+          <a class="button" href="petition-form.pdf" download>Download Petition Form (PDF)</a>
+          <p>Step 2. Sign the petition form.</p>
+          <p>Step 3. Scan the petition form and sent to:.</p>
+          <p>Step 4. Inform your neighbor! </p>
+        </div>
+      </div>
+  </section>
+
+  <script>
+    const map = L.map('map').setView([39.058, -77.180], 13); // Center near Potomac, MD
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+    
+    // Markers for schools
+    L.marker([39.04752669826508, -77.20675618108226]).addTo(map)
+      .bindTooltip('<b>Wayside ES</b><br>',
+      { permanent: true, direction: 'top', offset: [0, -10],opacity: 0.9});
+
+    L.marker([39.07733970396593, -77.18244222698837]).addTo(map)
+      .bindTooltip('<b>Wootton HS</b><br>',
+      { permanent: true, direction: 'bottom', offset: [0, -10],opacity: 0.9});
+
+    L.marker([39.043457459621365, -77.17335453067102]).addTo(map)
+      .bindTooltip('<b>Winston Churchill HS</b><br>',
+      { permanent: true, direction: 'top', offset: [0, -10],opacity: 0.9});
+  </script>
+
+  
+</body>
+</html>
