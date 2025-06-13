@@ -4,42 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Stop MCPS Reassignment</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5; }
-    header { background-color: #003366; color: white; padding: 20px; text-align: center; }
-    section { margin-top: 20px; }
-    a.button {
-      display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white;
-      text-decoration: none; border-radius: 5px; margin-top: 10px;
-    }
-    .row {
-  display: flex;
+    * {
+      box-sizing: border-box;
     }
 
-.column {
-  flex: 50%;
-}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+    }
 
     #map-container {
       width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
     }
 
     #map {
-      height: 400px;
       width: 100%;
+      height: 400px;
       border: 2px solid #ccc;
       border-radius: 10px;
     }
 
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5em;
+      }
 
+      .row {
+        flex-direction: column;
+      }
+
+      #map {
+        height: 300px;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Protect Our Community's Schools</h1>
     <p>Keep Wayside Elementary in Churchill</p>
@@ -58,47 +102,42 @@
       <li>Creates additional transitions during a sensitive time</li>
     </ul>
   </section>
-  <section>
-      <div class="row">
-        <div class="column">
-          <h2>School Locations</h2>
-          <div id="map-container">
-          <div id="map"></div>
-          </div>
-        </div>
 
-        <div class="column">
-          <h2>Take Action</h2>
-          <p>Step 1. Download the petition to keep Wayside in the Churchill cluster.</p>
-          <a class="button" href="petition-form.pdf" download>Download Petition Form (PDF)</a>
-          <p>Step 2. Sign the petition form.</p>
-          <p>Step 3. Scan the petition form and sent to:.</p>
-          <p>Step 4. Inform your neighbor! </p>
+  <section>
+    <div class="row">
+      <div class="column">
+        <h2>School Locations</h2>
+        <div id="map-container">
+          <div id="map"></div>
         </div>
       </div>
+      <div class="column">
+        <h2>Take Action</h2>
+        <p>Step 1. Download the petition to keep Wayside in the Churchill cluster.</p>
+        <a class="button" href="petition-form.pdf" download>Download Petition Form (PDF)</a>
+        <p>Step 2. Sign the petition form.</p>
+        <p>Step 3. Scan the petition form and send to:</p>
+        <p>Step 4. Inform your neighbor!</p>
+      </div>
+    </div>
   </section>
 
   <script>
-    const map = L.map('map').setView([39.058, -77.180], 13); // Center near Potomac, MD
+    const map = L.map('map').setView([39.058, -77.180], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
-    
-    // Markers for schools
+
     L.marker([39.04752669826508, -77.20675618108226]).addTo(map)
-      .bindTooltip('<b>Wayside ES</b><br>',
-      { permanent: true, direction: 'top', offset: [0, -10],opacity: 0.9});
+      .bindTooltip('<b>Wayside ES</b>', { permanent: true, direction: 'top', offset: [0, -10], opacity: 0.9 });
 
     L.marker([39.07733970396593, -77.18244222698837]).addTo(map)
-      .bindTooltip('<b>Wootton HS</b><br>',
-      { permanent: true, direction: 'bottom', offset: [0, -10],opacity: 0.9});
+      .bindTooltip('<b>Wootton HS</b>', { permanent: true, direction: 'bottom', offset: [0, -10], opacity: 0.9 });
 
     L.marker([39.043457459621365, -77.17335453067102]).addTo(map)
-      .bindTooltip('<b>Winston Churchill HS</b><br>',
-      { permanent: true, direction: 'top', offset: [0, -10],opacity: 0.9});
+      .bindTooltip('<b>Winston Churchill HS</b>', { permanent: true, direction: 'top', offset: [0, -10], opacity: 0.9 });
   </script>
 
-  
 </body>
 </html>
