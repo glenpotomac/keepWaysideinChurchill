@@ -57,7 +57,7 @@
     }
 
     #map-container {
-      width: 100%;
+      max-width: 600px;
     }
 
     #map {
@@ -92,7 +92,7 @@
   <section>
     <h2>What’s Happening?</h2>
     <p>
-      Crown High School is expected to open for the 2027–2028 school year. On December 5, 2024, the Board of Education contracted FLO Analytics to conduct a boundary study. This study includes several middle and high schools not in close proximity to the new high school. Four proposed options would significantly affect both the Wootton and Churchill clusters. In all options, students from Wayside Elementary and Hoover Middle School would be split between Churchill High School and Wootton High School. These changes could disrupt community stability, hinder student development, and negatively impact mental health.
+      Crown High School is expected to open for the 2027–2028 school year. On December 5, 2024, the Board of Education contracted FLO Analytics to conduct a boundary study to fill the new high school. This study includes several middle and high schools not in close proximity to the new high school. Four proposed options would significantly affect both the Wootton and Churchill clusters. In all options, students from Wayside Elementary and Hoover Middle School would be split between Churchill High School and Wootton High School. These changes could disrupt community stability, hinder student development, and negatively impact mental health.
     </p>
   </section>
 
@@ -118,8 +118,8 @@
     <div class="row">
       <div class="column">
         <h2>School Locations</h2>
-        <div id="map-container" style="max-width: 400px; margin-bottom: 1em;">
-          <div id="map" style="height: 300px;"></div>
+        <div id="map-container" style="max-width: 600px; margin-bottom: 1em;">
+          <div id="map" style="height: 370px;"></div>
         </div>
       </div>
       <div class="column">
@@ -130,13 +130,13 @@
           <li>Scan the completed form and send it to the organizing committee.</li>
           <li>Spread the word to family and friends!</li>
         </ol>
-        <a class="button" href="petition-form.pdf" download>Download Petition Form (PDF)</a>
+        <a class="button" href="WaysidePetitionForm.pdf" download>Download Petition Form (PDF)</a>
       </div>
     </div>
   </section>
 
   <script>
-    const map = L.map('map').setView([39.058, -77.180], 13);
+    const map = L.map('map').setView([39.060, -77.180], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
@@ -146,7 +146,7 @@
       .bindTooltip('<b>Wayside ES</b>', { permanent: true, direction: 'top', offset: [0, -10], opacity: 0.9 });
 
     L.marker([39.07733970396593, -77.18244222698837]).addTo(map)
-      .bindTooltip('<b>Wootton HS</b>', { permanent: true, direction: 'bottom', offset: [0, -10], opacity: 0.9 });
+      .bindTooltip('<b>Wootton HS</b>', { permanent: true, direction: 'bottom', offset: [0, 10], opacity: 0.9 });
 
     L.marker([39.043457459621365, -77.17335453067102]).addTo(map)
       .bindTooltip('<b>Winston Churchill HS</b>', { permanent: true, direction: 'top', offset: [0, -10], opacity: 0.9 });
